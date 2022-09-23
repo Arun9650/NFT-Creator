@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar';
 import Image from 'next/image';
+import { useAccount } from 'wagmi'
+import dynamic from 'next/dynamic';
 
-const NftData = ({ collections }) => {
+
+const NftData = () => {
 
   const [img, setImage] = useState([]);
 
 
+  const { address, isConnected } = useAccount()
 
   const fetchcollecion = async () => {
 
 
-    const WALLET_ADDRESS = '0xe94Fdf72D2cF5Dc685F7DcE638c086dee62b4Ac0';
+    const WALLET_ADDRESS = address;
 
     const options = {
       method: 'GET',
@@ -46,6 +50,8 @@ const NftData = ({ collections }) => {
         id: item.token_id,
       }))
         .filter(item => item.name && item.img);
+
+        console.log("iterator",assetsResponse)
     }
     return collection
   }
@@ -61,27 +67,55 @@ const NftData = ({ collections }) => {
         setImage(tx);
 
       }
-      hello();
+
+      if (isConnected) {
+        hello();
+      }
     }, [])
 
 
 
-  // console.log("cel",collections)
+  console.log("cel", img)
   return (
     <div
-      className='px-10 overflow-hidden'
+      className='px-10  overflow-hidden'
     >
       <Navbar />
-      <div className=' m-10 flex flex-wrap p-10 overflow-hidden  justify-evenly '>
-        {
-          img.map((item) => (
-            <div key={item.id} className="my-10  bg-white rounded-3xl  shadow-2xl">
+      <div className='   flex flex-wrap  overflow-hidden '>
 
-              <Image src={item.owned[0].img} alt={item.name} className="rounded-t-2xl    " width={390} height={200} />
-              <h2 className='text-2xl     text-center'>{item.owned[0].name}</h2>
-            </div>
-          ))
+
+        {
+          isConnected ?
+            <div className='flex  py-10  w-full justify-evenly  flex-wrap'>
+
+              {
+                img ?
+
+                  (
+
+                    img.map((item) => (
+                      <div key={item.contractAddress} className="my-10   bg-transperent rounded-3xl  shadow-2xl">
+                         
+                        <Image src={item.owned ? item.owned[0]?.img : "" } alt={item.name} className="rounded-t-2xl   object-contain " width={390} height={200} />
+                        <h2 className='text-2xl     text-center'>{item.owned ? item.owned[0]?.name : "NFT Name"}</h2>
+                      </div>
+                    ))
+                  )
+                  :
+
+                  <div className='text-3xl text-white '>
+                    Loading...
+                  </div>
+
+              }
+
+
+            </div> : (<div className='text-white my-20 p-20'> Please Connect a account </div>)
         }
+
+
+
+
       </div>
     </div>
   )
@@ -145,4 +179,4 @@ const NftData = ({ collections }) => {
 //   }
 
 
-export default NftData
+export default dynamic(() => Promise.resolve(NftData), { ssr: false }); 
