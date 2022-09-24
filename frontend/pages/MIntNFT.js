@@ -115,28 +115,28 @@ function MIntNFT() {
                 <div className='md:w-7/12 '>
                     <div className='flex flex-col gap-2'>
                         <label htmlFor="name" className='text-white font-bold text-xl   underline underline-offset-4'>Name of NFT* :</label>
-                        <input type="text" id="name" name='name' value={state.name} onChange={handleOnChange} className=' bg-transparent focus:outline-none  text-white px-8 py-1 contrast-more:border-slate-400 border border-2  rounded-md' />
+                        <input type="text" required id="name" name='name' value={state.name} onChange={handleOnChange} className=' bg-transparent focus:outline-none  text-white px-8 py-1 contrast-more:border-slate-400 border border-2  rounded-md' />
                     </div>
 
                    
 
                     <div className='flex flex-col gap-2'>
                         <label htmlFor="name" className='text-white font-bold text-xl   underline underline-offset-4'>Collection name* :</label>
-                        <input type="text" name='collectionName' onChange={handleOnChange} id="name" className=' bg-transparent focus:outline-none  text-white px-8 py-1 contrast-more:border-slate-400 border border-2  rounded-md' />
+                        <input type="text" required name='collectionName' onChange={handleOnChange} id="name" className=' bg-transparent focus:outline-none  text-white px-8 py-1 contrast-more:border-slate-400 border border-2  rounded-md' />
                     </div>
 
                     <div className='flex flex-col gap-2'>
-                        <label htmlFor="name" className='text-white font-bold text-xl   underline underline-offset-4'>Symbol of Collection* :</label>
+                        <label htmlFor="name" required className='text-white font-bold text-xl   underline underline-offset-4'>Symbol of Collection* :</label>
                         <input type="text" name='Symbol' id="name" onChange={handleOnChange} value={state.Symbol} className=' bg-transparent focus:outline-none  text-white px-8 py-1 contrast-more:border-slate-400 border border-2  rounded-md' />
                     </div>
                     
                     <div className='flex flex-col gap-2'>
                         <label htmlFor="name" className='text-white font-bold text-xl   underline underline-offset-4'>Description* :</label>
-                        <input type="text" name='description' onChange={handleOnChange} id="name" className=' bg-transparent focus:outline-none  text-white px-8 py-1 contrast-more:border-slate-400 border border-2  rounded-md' />
+                        <input type="text" required name='description' onChange={handleOnChange} id="name" className=' bg-transparent focus:outline-none  text-white px-8 py-1 contrast-more:border-slate-400 border border-2  rounded-md' />
                     </div>
 
                     <div className='flex flex-col gap-2'>
-                        <label htmlFor="name" className='text-white font-bold text-xl   underline underline-offset-4'>Image*</label>
+                        <label htmlFor="name" required className='text-white font-bold text-xl   underline underline-offset-4'>Image*</label>
                         <input type="file" onChange={imageHandler} name="image" id='name' />
                     </div>
 
