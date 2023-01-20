@@ -78,7 +78,7 @@ const NftData = () => {
   console.log("cel", img)
   return (
     <div
-      className='px-10  overflow-hidden'
+      className='px-10 min-h-screen overflow-hidden'
     >
       <Navbar />
       <div className='   flex flex-wrap  overflow-hidden '>
@@ -103,7 +103,7 @@ const NftData = () => {
                   )
                   :
 
-                  <div className='text-3xl text-white '>
+                  <div className='text-3xl flex  text-white '>
                     Loading...
                   </div>
 

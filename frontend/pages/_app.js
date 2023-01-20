@@ -14,10 +14,10 @@ import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
 const { chains, provider } = configureChains(
-  [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum, chain.rinkeby, chain.goerli],
+  [chain.goerli],
   [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider()
+    alchemyProvider({ apiKey:'ywjstIh80liS6S1wNaEZXN_QRdopL1oY' }),
+    // publicProvider()
   ]
 );
 
